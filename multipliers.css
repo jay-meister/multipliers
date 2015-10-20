@@ -1,0 +1,84 @@
+body {
+  background-color: #ADEBEB;
+}
+#contain {
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 300px;
+}
+#question {
+  font-size: 40px;
+}
+#ui-Number{
+  width: 290px;
+  height: 50px;
+}
+#but-NewRound{
+  width: 290px;
+  height: 60px;
+}
+#title{
+  line-height: 1px;
+}
+#pregame{
+  height: 200px;
+}
+#ingame{
+  height: 200px;
+}
+#question-container{
+  height: 100px;
+}
+#ingame-bottom{
+  display: inline;
+}
+#response-container{
+  float: left;
+  height: 30px;
+  width: 100px;
+}
+#exit-container{
+  margin-top: 5px;
+  margin-right: 12px;
+  float: right;
+  height: 30px;
+}
+#exit-container p{
+  margin-top: 5px;
+  float: right;
+  color: grey;
+  font-size: 14px;
+}
+
+input[type="text"] {
+  width: 290px;
+  height: 50px;
+    padding: 5px 5px;
+  border: 0px solid black;
+  border-bottom: 1px solid white;
+  border-left:1px solid white;
+  background-color: #BDEFEF;
+  font-family: Roboto;
+  font-weight: 200;
+  font-size: 18px;
+}
+.button {
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  border: 1px solid white;
+  color:#000;
+  text-decoration:none;
+  background: #C6F1F1;
+}
+.button:hover{
+  background-color: #EBFAFA;
+}
+h3 {
+  font-size: 65px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 100;
+}
+p {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 200;
+}

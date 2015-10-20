@@ -1,0 +1,60 @@
+<!--
+Settings tab:
+Default time and range of numbers that get tested (Minimum & Maximum)
+More information on the fields?
+
+Functionality: 
+End of round:
+Tells user correct incorrect answers
+Tells user score
+Tells user average time
+
+Later:
+Tells user which numbers they are worst on
+Tells user the slowest answers
+Some live response how user is doing
+ - prog bar, background colour?
+
+  -->
+
+<head>
+  <link rel="stylesheet" type="text/css" href="multipliers.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500' rel='stylesheet' type='text/css'> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <div id="contain">
+    <div id="title">
+      <h3>Multipliers</h3>
+    </div>
+    <div id="pregame">
+      <input id="ui-Number" class="input" type="text" placeholder="Choose a number to practice with"></input>
+      <br><br>
+      <input id="ui-TimeLimit" class="input" type="text" placeholder="Chose a time limit in seconds"></iput>
+      <br><br> 
+      <button id="but-NewRound" class="button" type="button">New Round</button>
+    </div>
+
+    <div id="ingame">
+      <div id="question-container">
+        <p id="question">0...</p>
+      </div>
+      <input class="input" type="text" id="ui-Answer"></input>
+      <br>
+      <div id="ingame-bottom">
+        <div id="response-container">
+          <p id="response">Wrong</p>
+        </div>
+        <div id="exit-container">
+          <p id="exit-game">Main Menu</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="multipliers.js"></script>
+</body>
+
