@@ -1,11 +1,13 @@
 body{
   overflow: hidden;
+  background-color: grey;
 }
 #outer-window{
   height: 400px;
   width: 400px;
   position: absolute;
   background-color: #ADEBEB;
+  border-radius: 5px;
   box-shadow: 10px 10px 5px #DBDBDB;
 }
 #contain {
