@@ -1,12 +1,12 @@
-HTML {
-  height: 300px;
-  width: 300px;
+body{
+  overflow: hidden;
 }
-
-body {
+#outer-window{
+  height: 400px;
+  width: 400px;
+  position: absolute;
   background-color: #ADEBEB;
-  height: 300px;
-  width: 300px;
+  box-shadow: 10px 10px 5px #DBDBDB;
 }
 #contain {
   margin-top: 50px;
