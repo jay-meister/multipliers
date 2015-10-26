@@ -9,10 +9,15 @@ Tells user correct incorrect answers
 Tells user score
 Tells user average time
 
+General to do:
+count in timer 1,2,3
+fix glitch movement on new round div entrance
+
 Later:
 Tells user which numbers they are worst on
 Tells user the slowest answers
-Some live response how user is doing
+Live response to each question - fade out green or red
+Some live response how user is doing overall
  - prog bar, background colour?
 
   -->
@@ -39,7 +44,8 @@ Some live response how user is doing
 
     <div id="ingame">
       <div id="question-container">
-        <p id="question">0...</p>
+        <p id="question-number"></p>
+        <p id="question"></p>
       </div>
       <input class="input" type="text" id="ui-Answer"></input>
       <br>

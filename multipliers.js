@@ -4,6 +4,8 @@ $(document).ready(function(){
   var correctAns, userAns;
   var userTimeLimit = 8;
   var timeoutVariable, chosenValues;
+  var gameOver = true;
+  var countdown = 3;
 
 
   $("#ingame").hide();
@@ -12,8 +14,20 @@ $(document).ready(function(){
   $('#but-NewRound').click(newRound);
 
 
+
+  //if the user presses enter check ans;
+  $('#ui-Answer').keypress(function(e){
+    if(e.which == 13){//Enter key pressed
+      checkAns();//Trigger checkans
+    }
+  });
+
+  $('#exit-container').click(exitGame);
+
+
   //new round function
   function newRound() {
+    gameOver = false;
     //clear the previous user answer and response
     $('#response').text("");
     $('#ui-Answer').val("");
@@ -46,19 +60,31 @@ $(document).ready(function(){
       chosenValues = chosenValues.split(",");
     }
 
-//this needs sorting
-//
-    setTimeout(newQuestion, 3000);
 
-    $("#pregame").hide(1000);
-    $("#ingame").show(1000);
+    $("#pregame").hide();
+    $("#ingame").show(900);
+
+    //sets the countdown before first question
+    var countdownInterval = setInterval(function(){
+
+      $('#question-number').text(countdown);
+      $('#question-number').fadeIn(300);
+      $('#question-number').fadeOut(700);
+      countdown--;
+      if(countdown === -1 ){ 
+        countdown = 3;
+        clearInterval(countdownInterval); 
+      }
+    },1000);
+    setTimeout(newQuestion, 5000);
   }
 
 
   function newQuestion() {
+    if(gameOver){ return; }
+    $('#question').hide();
+
     window.clearTimeout(timeoutVariable);
-    
-//NOT WORKING AUTO FOCUS ON USER ANS FIELD    
     $('#ui-Answer').focus();
 
     //choose a question
@@ -72,7 +98,12 @@ $(document).ready(function(){
     n = Math.ceil(Math.random() * 10) + 3;
 
     correctAns = m * n;
-    $('#question').text(questionsAnswered+1 + "...  " + m + " x " + n + " = ");
+    $('#question-number').text(questionsAnswered+1+".");
+    $('#question').text( m + " x " + n + " = ");
+    
+    $('#question-number').fadeIn(200);
+    $('#question').fadeIn(200);
+    
     
     //user has usertimelimit or 8 seconds until checkans is searched
     timeoutVariable = setTimeout(checkAns, userTimeLimit);
@@ -80,6 +111,51 @@ $(document).ready(function(){
   }
 
   function checkAns() {
+    //must also deal with 20 questions
+    
+    window.clearTimeout(timeoutVariable);
+    userAns = parseInt($('#ui-Answer').val());
+    questionsAnswered++;
+    if (userAns == correctAns) {
+      $("#question").css("color", "green");
+      numberCorrectAns++;
+       $('#question').fadeOut(1000,function(){
+        $("#question").css("color", "black");
+        $('#ui-Answer').val("");//remove previous answer answer
+        if (questionsAnswered <= 20) { newQuestion(); }
+       });
+    } else {
+      $("#question").css("color", "red");
+      $('#question').fadeOut(1000,function(){
+        $("#question").css("color", "black");
+        $('#ui-Answer').val("");//remove previous answer answer
+        if (questionsAnswered <= 20) { newQuestion(); }
+       });
+    }
+
+    if (questionsAnswered === 20) {
+      alert("Score: " + numberCorrectAns + "/20 with time limit of " + userTimeLimit/1000 + " seconds.");
+      exitGame();
+    }
+
+  }
+
+  function exitGame(){
+    gameOver = true;
+    window.clearTimeout(timeoutVariable);
+    $("#ingame").hide();
+    $("#pregame").show(1000);
+    $('#question').text("");
+    $('#question-number').text("");
+
+
+
+  }
+
+
+
+});
+/*  function checkAns() {
     window.clearTimeout(timeoutVariable);
 
     userAns = parseInt($('#ui-Answer').val());
@@ -89,33 +165,22 @@ $(document).ready(function(){
     } else {
       $('#response').text("Unlucky!");
     }
-
     $('#ui-Answer').val("");//remove previous answer answer
     
+    $('#question').fadeOut(5000,function(){
+      $('#question').remove();
+    });
+
     questionsAnswered++;
     
     if (questionsAnswered === 20) {
-      $("#ingame").hide();
       alert("Score: " + numberCorrectAns + "/20 with time limit of " + userTimeLimit/1000 + " seconds.");
-      $("#pregame").show(1000);
-
+      exitGame();
     } else {
       newQuestion();
     }    
-  }
+  }*/
 
-  //if the user presses enter check ans;
-  $('#ui-Answer').keypress(function(e){
-    if(e.which == 13){//Enter key pressed
-      checkAns();//Trigger checkans
-    }
-  });
-
-
-
-
-
-});
 
 
 
