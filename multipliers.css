@@ -3,6 +3,7 @@ body{
   background-color: grey;
 }
 #outer-window{
+  margin: 10% 25% 10% 20%;
   height: 400px;
   width: 400px;
   position: absolute;
