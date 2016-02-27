@@ -4,9 +4,9 @@ function startGame(){
     // change screen & display countdown timer
     // run listeners
     // get usrChoice and options from settings
-    var options = { timeLimit: 8 };
+    var options = { timeLimit: 4000 };
     // build questions.
-    var questions = buildQuestions([6],[13],10);
+    var questions = buildQuestions([6,7,8],[4,5,6,7],5);
     // ask questions
     askQuestions( questions, options );
     // deal with answer
@@ -15,16 +15,36 @@ function startGame(){
 }
 
 function askQuestions( questions, options ){
+    var counter = 0, noOfQuestions = questions.length, time = options.timeLimit, currQuestion;
     var domQu = document.getElementById( 'question' );
-    questions.forEach( function( qu ){
-        domQu.innerHTML = qu[0] + ' x ' + qu[1] + ' = ';
-        console.log(qu[0] + ' x ' + qu[1] + ' = ');
-        return 2;
-    });
-    console.log(questions);
+    var domAns = document.getElementById( 'userAnswer' );
+    nextQuestion();
+
+    function nextQuestion(){
+        currQuestion = questions[counter];
+        domQu.innerHTML = currQuestion[0] + ' x ' + currQuestion[1] + ' = ';
+        setTimeout( checkAns , time);
+    }
+
+    function checkAns(){
+        console.log(domAns.value);
+        if( domAns.value === currQuestion[2].toString() ){
+            console.log('correct');
+        } else {
+            console.log('incorrect');
+        }
+        counter++;
+        domQu.innerHTML = '';
+        domAns.value = '';
+        if( counter < noOfQuestions){
+            setTimeout(nextQuestion , 500);
+        } else {
+            console.log('Game finished');
+        }
+    }
+
 }
 
-// function printQuestion( str, )
 
 
 
