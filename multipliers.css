@@ -73,6 +73,7 @@ body{
   cursor: pointer; cursor: hand; 
   color: grey;
   font-size: 14px;
+  transition: color 0.2s ease-in;
   -webkit-transition: color 0.2s ease-in; /*safari and chrome */
   -o-transition: color 0.2s ease-in; /* opera */
 }
@@ -103,6 +104,7 @@ input[type="text"] {
   color:#000;
   text-decoration:none;
   background: #C6F1F1;
+  transition: background-color 0.1s ease-in; 
   -webkit-transition: background-color 0.1s ease-in; /*safari and chrome */
   -o-transition: background-color 0.1s ease-in; /* opera */
 }
